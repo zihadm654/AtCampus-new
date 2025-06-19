@@ -1,0 +1,132 @@
+model Education {
+   id String @id @default(cuid()) @map("_id")
+
+   institution String
+   degree      String
+   field       String
+   startDate   DateTime
+   endDate     DateTime?
+   grade       String?
+   description String?
+
+   userId String
+   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+   createdAt DateTime @default(now()) @map(name: "created_at")
+   updatedAt DateTime @default(now()) @map(name: "updated_at")
+
+   @@map(name: "education")
+}
+
+model Experience {
+   id String @id @default(cuid()) @map("_id")
+
+   title       String
+   company     String
+   location    String?
+   type        String // Full-time, Part-time, Internship, etc.
+   startDate   DateTime
+   endDate     DateTime?
+   current     Boolean   @default(false)
+   description String?
+
+   userId String
+   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+   createdAt DateTime @default(now()) @map(name: "created_at")
+   updatedAt DateTime @default(now()) @map(name: "updated_at")
+
+   @@map(name: "experiences")
+}
+
+model Course {
+   id String @id @default(cuid()) @map("_id")
+
+   title       String
+   description String
+   code        String?
+   credits     Int?
+   level       String? // Undergraduate, Graduate, etc.
+   department  String?
+   duration    Int? // in weeks
+   status      String  @default("draft") // draft, published, archived
+
+   professorId String
+   professor   User   @relation(fields: [professorId], references: [id], onDelete: Cascade)
+
+   createdAt DateTime @default(now()) @map(name: "created_at")
+   updatedAt DateTime @default(now()) @map(name: "updated_at")
+
+   enrollments   Enrollment[]
+   announcements CourseAnnouncement[]
+   materials     CourseMaterial[]
+
+   @@map(name: "courses")
+}
+
+model Enrollment {
+   id String @id @default(cuid()) @map("_id")
+
+   status   String  @default("enrolled") // enrolled, completed, dropped
+   progress Float   @default(0)
+   grade    String?
+
+   courseId  String
+   course    Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+   studentId String
+   student   User   @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+   createdAt DateTime @default(now()) @map(name: "created_at")
+   updatedAt DateTime @default(now()) @map(name: "updated_at")
+
+   @@unique([courseId, studentId])
+   @@map(name: "enrollments")
+}
+
+model CourseAnnouncement {
+   id String @id @default(cuid()) @map("_id")
+
+   title    String
+   content  String
+   priority String? // normal, important, urgent
+
+   courseId String
+   course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+   createdAt DateTime @default(now()) @map(name: "created_at")
+   updatedAt DateTime @default(now()) @map(name: "updated_at")
+
+   @@map(name: "course_announcements")
+}
+
+model CourseMaterial {
+   id String @id @default(cuid()) @map("_id")
+
+   title   String
+   type    String // document, video, link, etc.
+   content String?
+   fileUrl String?
+   order   Int     @default(0)
+
+   courseId String
+   course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+   createdAt DateTime @default(now()) @map(name: "created_at")
+   updatedAt DateTime @default(now()) @map(name: "updated_at")
+
+   @@map(name: "course_materials")
+}
+
+model SkillEndorsement {
+   id String @id @default(cuid()) @map("_id")
+
+   userSkillId String
+   userSkill   UserSkill @relation(fields: [userSkillId], references: [id], onDelete: Cascade)
+   endorserId  String
+   endorser    User      @relation(fields: [endorserId], references: [id], onDelete: Cascade)
+
+   createdAt DateTime @default(now()) @map(name: "created_at")
+
+   @@unique([userSkillId, endorserId])
+   @@map(name: "skill_endorsements")
+}

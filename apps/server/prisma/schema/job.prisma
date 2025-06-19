@@ -1,0 +1,121 @@
+enum ApplicationStatus {
+   pending
+   accepted
+   rejected
+}
+
+model Skill {
+   id      String   @id @default(cuid()) @map("_id")
+   title   String
+   content String[]
+
+   createdAt DateTime @default(now()) @map(name: "created_at")
+   updatedAt DateTime @default(now()) @map(name: "updated_at")
+
+   jobs       Job[]
+   userSkills UserSkill[]
+
+   @@map(name: "skills")
+}
+
+model UserSkill {
+   id String @id @default(cuid()) @map("_id")
+
+   skillId           String
+   skill             Skill  @relation(fields: [skillId], references: [id], onDelete: Cascade)
+   userId            String
+   user              User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+   level             Int    @default(1) // 1-5 scale
+   yearsOfExperience Int?
+
+   endorsements SkillEndorsement[]
+
+   createdAt DateTime @default(now()) @map(name: "created_at")
+   updatedAt DateTime @default(now()) @map(name: "updated_at")
+
+   @@unique([userId, skillId])
+   @@map(name: "user_skills")
+}
+
+model Job {
+   id              String   @id @default(cuid()) @map("_id")
+   title           String
+   description     String
+   startDate       DateTime
+   endDate         DateTime
+   weeklyHours     Int
+   requirements    String[]
+   salary          Float
+   location        String
+   type            String
+   experienceLevel String
+   duration        Int
+   createdAt       DateTime @default(now()) @map(name: "created_at")
+   updatedAt       DateTime @default(now()) @map(name: "updated_at")
+
+   user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+   userId  String
+   skill   Skill  @relation(fields: [skillId], references: [id], onDelete: Cascade)
+   skillId String
+
+   comments            Comment[] // Add onDelete: Cascade if desired
+   likes               Like[] // Add onDelete: Cascade if desired
+   linkedNotifications Notification[]
+   attachments         Media[]
+   company             Company[]
+   application         Application[]
+   saveJob             SaveJob[]
+   views               ContentView[]
+
+   @@map(name: "jobs")
+}
+
+model Company {
+   id String @id @default(cuid()) @map("_id")
+
+   name        String
+   description String?
+   website     String?
+   location    String?
+   logo        String?
+
+   userId String
+   user   User   @relation(fields: [userId], references: [id])
+   jobId  String
+   job    Job    @relation(fields: [jobId], references: [id])
+
+   createdAt DateTime @default(now()) @map(name: "created_at")
+   updatedAt DateTime @default(now()) @map(name: "updated_at")
+
+   @@map(name: "companies")
+}
+
+model Application {
+   id String @id @default(cuid()) @map("_id")
+
+   applicantId String
+   applicant   User   @relation(fields: [applicantId], references: [id])
+   jobId       String
+   job         Job    @relation(fields: [jobId], references: [id])
+
+   status ApplicationStatus @default(pending)
+
+   createdAt DateTime @default(now()) @map(name: "created_at")
+   updatedAt DateTime @default(now()) @map(name: "updated_at")
+
+   @@map(name: "applications")
+}
+
+model SaveJob {
+   id     String @id @default(cuid()) @map("_id")
+   userId String
+   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+   job    Job    @relation(fields: [jobId], references: [id])
+   jobId  String
+
+   createdAt DateTime @default(now()) @map(name: "created_at")
+   updatedAt DateTime @default(now()) @map(name: "updated_at")
+
+   @@unique([userId, jobId])
+   @@map(name: "save_jobs")
+}

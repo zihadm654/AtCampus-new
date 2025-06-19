@@ -1,0 +1,129 @@
+enum UserRole {
+  STUDENT
+  PROFESSOR
+  INSTITUTION
+  ORGANIZATION
+}
+
+model User {
+  id              String    @id @map("_id")
+  name            String
+  email           String
+  emailVerified   Boolean
+  image           String?
+  coverImage      String?
+  bio             String?
+  institution     String?
+  currentSeamster Int?
+  role            UserRole  @default(STUDENT)
+  twoFactor       Boolean   @default(false)
+  username        String?   @unique
+  displayUsername String?
+  banned          Boolean?
+  banReason       String?
+  banExpires      DateTime?
+
+  createdAt             DateTime
+  updatedAt             DateTime
+  sessions              Session[]
+  accounts              Account[]
+  posts                 Post[]
+  comments              Comment[]
+  likes                 Like[]
+  followers             Follow[]           @relation("UserFollowers")
+  followings            Follow[]           @relation("UserFollowings")
+  TwoFactor             TwoFactor[]
+  receivedNotifications Notification[]     @relation("Recipient")
+  issuedNotifications   Notification[]     @relation("Issuer")
+  bookmarks             Bookmark[]
+  job                   Job[]
+  company               Company[]
+  application           Application[]
+  research              Research[]
+  saveJob               SaveJob[]
+  saveResearch          SaveResearch[]
+  education             Education[]
+  experience            Experience[]
+  courses               Course[]
+  enrollments           Enrollment[]
+  userSkills            UserSkill[]
+  skillEndorsements     SkillEndorsement[]
+  profileViewsBy        ProfileView[]      @relation("ViewerProfile")
+  profileViews          ProfileView[]      @relation("ViewedProfile")
+  contentViews          ContentView[]
+
+  @@unique([email])
+  @@map("user")
+}
+
+model Session {
+  id        String   @id @map("_id")
+  expiresAt DateTime
+  token     String
+  createdAt DateTime
+  updatedAt DateTime
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([token])
+  @@index([userId])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id @map("_id")
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime
+  updatedAt             DateTime
+
+  @@index([userId])
+  @@map("account")
+}
+
+model Verification {
+  id         String    @id @map("_id")
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime?
+  updatedAt  DateTime?
+
+  @@index([identifier])
+  @@map("verification")
+}
+
+model TwoFactor {
+  id          String @id @default(cuid()) @map("_id")
+  secret      String
+  backupCodes String
+  userId      String
+  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([secret])
+  @@map("twoFactor")
+}
+
+model ProfileView {
+  id String @id @default(cuid()) @map("_id")
+
+  viewerId  String
+  viewer    User   @relation("ViewerProfile", fields: [viewerId], references: [id], onDelete: Cascade)
+  profileId String
+  profile   User   @relation("ViewedProfile", fields: [profileId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now()) @map(name: "created_at")
+
+  @@map(name: "profile_views")
+}

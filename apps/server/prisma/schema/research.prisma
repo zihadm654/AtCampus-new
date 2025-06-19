@@ -1,0 +1,53 @@
+model Research {
+   id String @id @default(cuid()) @map("_id")
+
+   title       String
+   description String
+   content     String
+
+   createdAt DateTime @default(now()) @map(name: "created_at")
+   updatedAt DateTime @default(now()) @map(name: "updated_at")
+
+   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+   userId String
+
+   comments            Comment[] // Add onDelete: Cascade if desired, though this is on the Comment side
+   likes               Like[] // Add onDelete: Cascade if desired, though this is on the Like side
+   linkedNotifications Notification[]
+   attachments         Media[]
+   saveResearch        SaveResearch[]
+   views               ContentView[]
+
+   @@map(name: "researches")
+}
+
+model ContentView {
+   id String @id @default(cuid()) @map("_id")
+
+   viewerId   String
+   viewer     User      @relation(fields: [viewerId], references: [id], onDelete: Cascade)
+   postId     String?
+   post       Post?     @relation(fields: [postId], references: [id], onDelete: Cascade)
+   researchId String?
+   research   Research? @relation(fields: [researchId], references: [id], onDelete: Cascade)
+   jobId      String?
+   job        Job?      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+   createdAt DateTime @default(now()) @map(name: "created_at")
+
+   @@map(name: "content_views")
+}
+
+model SaveResearch {
+   id         String   @id @default(cuid()) @map("_id")
+   userId     String
+   user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+   researchId String
+   research   Research @relation(fields: [researchId], references: [id], onDelete: Cascade)
+
+   createdAt DateTime @default(now()) @map(name: "created_at")
+   updatedAt DateTime @default(now()) @map(name: "updated_at")
+
+   @@unique([userId, researchId])
+   @@map(name: "save_researches")
+}
