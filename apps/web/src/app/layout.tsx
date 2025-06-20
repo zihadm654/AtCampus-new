@@ -5,18 +5,18 @@ import Header from "@/components/header";
 import Providers from "@/components/providers";
 
 const geistSans = Geist({
-	variable: "--font-geist-sans",
 	subsets: ["latin"],
+	variable: "--font-geist-sans",
 });
 
 const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
 	subsets: ["latin"],
+	variable: "--font-geist-mono",
 });
 
 export const metadata: Metadata = {
-	title: "AtCampus-new",
 	description: "AtCampus-new",
+	title: "AtCampus-new",
 };
 
 export default function RootLayout({

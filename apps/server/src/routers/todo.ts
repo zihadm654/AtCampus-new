@@ -4,14 +4,6 @@ import prisma from "../../prisma";
 import { publicProcedure, router } from "../lib/trpc";
 
 export const todoRouter = router({
-	getAll: publicProcedure.query(async () => {
-		return await prisma.todo.findMany({
-			orderBy: {
-				id: "asc",
-			},
-		});
-	}),
-
 	create: publicProcedure
 		.input(z.object({ text: z.string().min(1) }))
 		.mutation(async ({ input }) => {
@@ -22,13 +14,12 @@ export const todoRouter = router({
 			});
 		}),
 
-	toggle: publicProcedure
-		.input(z.object({ id: z.string(), completed: z.boolean() }))
+	delete: publicProcedure
+		.input(z.object({ id: z.string() }))
 		.mutation(async ({ input }) => {
 			try {
-				return await prisma.todo.update({
+				return await prisma.todo.delete({
 					where: { id: input.id },
-					data: { completed: input.completed },
 				});
 			} catch (_error) {
 				throw new TRPCError({
@@ -37,12 +28,20 @@ export const todoRouter = router({
 				});
 			}
 		}),
+	getAll: publicProcedure.query(async () => {
+		return await prisma.todo.findMany({
+			orderBy: {
+				id: "asc",
+			},
+		});
+	}),
 
-	delete: publicProcedure
-		.input(z.object({ id: z.string() }))
+	toggle: publicProcedure
+		.input(z.object({ completed: z.boolean(), id: z.string() }))
 		.mutation(async ({ input }) => {
 			try {
-				return await prisma.todo.delete({
+				return await prisma.todo.update({
+					data: { completed: input.completed },
 					where: { id: input.id },
 				});
 			} catch (_error) {

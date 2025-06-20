@@ -16,33 +16,38 @@ import { ac, roles } from "../lib/permissions";
 import { normalizeName, VALID_DOMAINS } from "../utils";
 
 const options = {
+	account: {
+		accountLinking: {
+			enabled: false,
+		},
+	},
+	advanced: {
+		database: {
+			generateId: false,
+		},
+	},
 	database: prismaAdapter(prisma, {
 		provider: "mongodb",
 	}),
-	emailVerification: {
-		sendOnSignUp: true,
-		expiresIn: 60 * 60,
-		autoSignInAfterVerification: true,
-		//  sendVerificationEmail: async ({ user, url }) => {
-		//    const link = new URL(url);
-		//    link.searchParams.set("callbackURL", "/verify");
+	databaseHooks: {
+		user: {
+			create: {
+				before: async (user) => {
+					const ADMIN_EMAILS = process.env.ADMIN_EMAILS?.split(";") ?? [];
 
-		//    await sendEmailAction({
-		//      to: user.email,
-		//      subject: "Verify your email address",
-		//      meta: {
-		//        description:
-		//          "Please verify your email address to complete the registration process.",
-		//        link: String(link),
-		//      },
-		//    });
-		//  },
+					if (ADMIN_EMAILS.includes(user.email)) {
+						return { data: { ...user, role: "INSTITUTION" } };
+					}
+
+					return { data: user };
+				},
+			},
+		},
 	},
-	trustedOrigins: [process.env.CORS_ORIGIN || ""],
 	emailAndPassword: {
+		autoSignIn: false,
 		enabled: true,
 		minPasswordLength: 6,
-		autoSignIn: false,
 		password: {
 			hash: hashPassword,
 			verify: verifyPassword,
@@ -55,6 +60,25 @@ const options = {
 		//      meta: {
 		//        description: "Please click the link below to reset your password.",
 		//        link: String(url),
+		//      },
+		//    });
+		//  },
+	},
+	emailVerification: {
+		autoSignInAfterVerification: true,
+		expiresIn: 60 * 60,
+		sendOnSignUp: true,
+		//  sendVerificationEmail: async ({ user, url }) => {
+		//    const link = new URL(url);
+		//    link.searchParams.set("callbackURL", "/verify");
+
+		//    await sendEmailAction({
+		//      to: user.email,
+		//      subject: "Verify your email address",
+		//      meta: {
+		//        description:
+		//          "Please verify your email address to complete the registration process.",
+		//        link: String(link),
 		//      },
 		//    });
 		//  },
@@ -94,68 +118,13 @@ const options = {
 			}
 		}),
 	},
-	databaseHooks: {
-		user: {
-			create: {
-				before: async (user) => {
-					const ADMIN_EMAILS = process.env.ADMIN_EMAILS?.split(";") ?? [];
-
-					if (ADMIN_EMAILS.includes(user.email)) {
-						return { data: { ...user, role: "INSTITUTION" } };
-					}
-
-					return { data: user };
-				},
-			},
-		},
-	},
-	user: {
-		additionalFields: {
-			institution: {
-				type: "string",
-				input: true,
-			},
-			instituteId: {
-				type: "string",
-				input: true,
-			},
-			role: {
-				type: ["STUDENT", "PROFESSOR", "INSTITUTION", "ORGANIZATION"],
-				input: true,
-			},
-		},
-	},
-	session: {
-		expiresIn: 30 * 24 * 60 * 60,
-		updateAge: 60 * 60 * 24,
-		cookieCache: {
-			enabled: true,
-			maxAge: 5 * 60,
-		},
-	},
-	account: {
-		accountLinking: {
-			enabled: false,
-		},
-	},
-	advanced: {
-		database: {
-			generateId: false,
-		},
-	},
-	socialProviders: {
-		google: {
-			clientId: String(process.env.GOOGLE_CLIENT_ID),
-			clientSecret: String(process.env.GOOGLE_CLIENT_SECRET),
-		},
-	},
 	plugins: [
 		nextCookies(),
 		username(),
 		admin({
-			defaultRole: "STUDENT",
-			adminRoles: ["INSTITUTION", "PROFESSOR", "ORGANIZATION"],
 			ac,
+			adminRoles: ["INSTITUTION", "PROFESSOR", "ORGANIZATION"],
+			defaultRole: "STUDENT",
 			roles,
 		}),
 		twoFactor(),
@@ -172,6 +141,37 @@ const options = {
 		//    },
 		//  }),
 	],
+	session: {
+		cookieCache: {
+			enabled: true,
+			maxAge: 5 * 60,
+		},
+		expiresIn: 30 * 24 * 60 * 60,
+		updateAge: 60 * 60 * 24,
+	},
+	socialProviders: {
+		google: {
+			clientId: String(process.env.GOOGLE_CLIENT_ID),
+			clientSecret: String(process.env.GOOGLE_CLIENT_SECRET),
+		},
+	},
+	trustedOrigins: [process.env.CORS_ORIGIN || ""],
+	user: {
+		additionalFields: {
+			instituteId: {
+				input: true,
+				type: "string",
+			},
+			institution: {
+				input: true,
+				type: "string",
+			},
+			role: {
+				input: true,
+				type: ["STUDENT", "PROFESSOR", "INSTITUTION", "ORGANIZATION"],
+			},
+		},
+	},
 } satisfies BetterAuthOptions;
 
 export const auth: any = betterAuth({
@@ -186,20 +186,20 @@ export const auth: any = betterAuth({
 					userAgent: session.userAgent,
 				},
 				user: {
-					id: user.id,
-					username: user.username,
-					displayUsername: user.displayUsername,
-					name: user.name,
-					email: user.email,
-					image: user.image,
-					createdAt: user.createdAt,
-					updatedAt: user.updatedAt,
-					role: user.role,
-					emailVerified: user.emailVerified,
-					twoFactorEnabled: user.twoFactorEnabled,
+					banExpires: user.banExpires,
 					banned: user.banned,
 					banReason: user.banReason,
-					banExpires: user.banExpires,
+					createdAt: user.createdAt,
+					displayUsername: user.displayUsername,
+					email: user.email,
+					emailVerified: user.emailVerified,
+					id: user.id,
+					image: user.image,
+					name: user.name,
+					role: user.role,
+					twoFactorEnabled: user.twoFactorEnabled,
+					updatedAt: user.updatedAt,
+					username: user.username,
 				},
 			};
 		}, options),

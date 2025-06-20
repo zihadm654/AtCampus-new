@@ -50,7 +50,7 @@ export default function TodosPage() {
 	};
 
 	const handleToggleTodo = (id: string, completed: boolean) => {
-		toggleMutation.mutate({ id, completed: !completed });
+		toggleMutation.mutate({ completed: !completed, id });
 	};
 
 	const handleDeleteTodo = (id: string) => {

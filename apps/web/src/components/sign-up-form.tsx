@@ -19,31 +19,31 @@ export default function SignUpForm({
 	const form = useForm({
 		defaultValues: {
 			email: "",
-			password: "",
 			name: "",
+			password: "",
 		},
 		onSubmit: async ({ value }) => {
 			await signUp.email(
 				{
 					email: value.email,
-					password: value.password,
 					name: value.name,
+					password: value.password,
 				},
 				{
+					onError: (error) => {
+						toast.error(error.error.message);
+					},
 					onSuccess: () => {
 						router.push("/dashboard");
 						toast.success("Sign up successful");
-					},
-					onError: (error) => {
-						toast.error(error.error.message);
 					},
 				},
 			);
 		},
 		validators: {
 			onSubmit: z.object({
-				name: z.string().min(2, "Name must be at least 2 characters"),
 				email: z.email("Invalid email address"),
+				name: z.string().min(2, "Name must be at least 2 characters"),
 				password: z.string().min(8, "Password must be at least 8 characters"),
 			}),
 		},

@@ -3,15 +3,15 @@
 const site_url = process.env.NEXT_PUBLIC_SERVER_URL as string;
 
 export const siteConfig = {
-	name: "AtCampus",
 	description: "An alumni organization management system for students.",
-	url: site_url,
-	ogImage: `${site_url}/_static/og.jpg`,
 	links: {
-		twitter: "https://twitter.com/atcampus",
 		github: "https://github.com/zihadm654/atcampus",
+		twitter: "https://twitter.com/atcampus",
 	},
 	mailSupport: "support@atcampus.com",
+	name: "AtCampus",
+	ogImage: `${site_url}/_static/og.jpg`,
+	url: site_url,
 };
 
 // export const footerLinks: SidebarNavItem[] = [

@@ -28,12 +28,12 @@ export default function SignInForm({
 					password: value.password,
 				},
 				{
+					onError: (error) => {
+						toast.error(error.error.message);
+					},
 					onSuccess: () => {
 						router.push("/dashboard");
 						toast.success("Sign in successful");
-					},
-					onError: (error) => {
-						toast.error(error.error.message);
 					},
 				},
 			);

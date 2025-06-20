@@ -3,14 +3,14 @@
 export const marketingConfig = {
 	mainNav: [
 		{
-			title: "Home",
 			href: "/",
 			icon: "home",
+			title: "Home",
 		},
 		{
-			title: "Jobs",
 			href: "/jobs",
 			icon: "job",
+			title: "Jobs",
 		},
 		{
 			href: "/courses",

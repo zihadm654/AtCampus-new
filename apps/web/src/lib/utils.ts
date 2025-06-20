@@ -23,8 +23,14 @@ export function constructMetadata({
 	noIndex?: boolean;
 } = {}): Metadata {
 	return {
-		title,
+		authors: [
+			{
+				name: "zihadm654",
+			},
+		],
+		creator: "zihadm654",
 		description,
+		icons,
 		keywords: [
 			"Next.js",
 			"React",
@@ -37,34 +43,28 @@ export function constructMetadata({
 			"Login",
 			"atCampus",
 		],
-		authors: [
-			{
-				name: "zihadm654",
-			},
-		],
-		creator: "zihadm654",
+		manifest: `${siteConfig.url}/site.webmanifest`,
+		metadataBase: new URL(siteConfig.url),
 		openGraph: {
-			type: "website",
-			locale: "en_US",
-			url: siteConfig.url,
-			title,
 			description,
+			locale: "en_US",
 			siteName: title,
+			title,
+			type: "website",
+			url: siteConfig.url,
 		},
+		title,
 		twitter: {
 			card: "summary_large_image",
-			title,
+			creator: "@zihadm654",
 			description,
 			images: [image],
-			creator: "@zihadm654",
+			title,
 		},
-		icons,
-		metadataBase: new URL(siteConfig.url),
-		manifest: `${siteConfig.url}/site.webmanifest`,
 		...(noIndex && {
 			robots: {
-				index: false,
 				follow: false,
+				index: false,
 			},
 		}),
 	};
@@ -81,8 +81,8 @@ export function formatRelativeDate(from: Date) {
 
 export function formatNumber(n: number): string {
 	return Intl.NumberFormat("en-US", {
-		notation: "compact",
 		maximumFractionDigits: 1,
+		notation: "compact",
 	}).format(n);
 }
 
@@ -191,13 +191,13 @@ export async function fetcher<JSON>(
 export function nFormatter(num: number, digits?: number) {
 	if (!num) return "0";
 	const lookup = [
-		{ value: 1, symbol: "" },
-		{ value: 1e3, symbol: "K" },
-		{ value: 1e6, symbol: "M" },
-		{ value: 1e9, symbol: "G" },
-		{ value: 1e12, symbol: "T" },
-		{ value: 1e15, symbol: "P" },
-		{ value: 1e18, symbol: "E" },
+		{ symbol: "", value: 1 },
+		{ symbol: "K", value: 1e3 },
+		{ symbol: "M", value: 1e6 },
+		{ symbol: "G", value: 1e9 },
+		{ symbol: "T", value: 1e12 },
+		{ symbol: "P", value: 1e15 },
+		{ symbol: "E", value: 1e18 },
 	];
 	const rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
 	const item = lookup
