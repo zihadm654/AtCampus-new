@@ -42,6 +42,7 @@ export type UserMinAggregateOutputType = {
 	coverImage: string | null;
 	bio: string | null;
 	institution: string | null;
+	instituteId: string | null;
 	currentSeamster: number | null;
 	role: $Enums.UserRole | null;
 	twoFactor: boolean | null;
@@ -63,6 +64,7 @@ export type UserMaxAggregateOutputType = {
 	coverImage: string | null;
 	bio: string | null;
 	institution: string | null;
+	instituteId: string | null;
 	currentSeamster: number | null;
 	role: $Enums.UserRole | null;
 	twoFactor: boolean | null;
@@ -84,6 +86,7 @@ export type UserCountAggregateOutputType = {
 	coverImage: number;
 	bio: number;
 	institution: number;
+	instituteId: number;
 	currentSeamster: number;
 	role: number;
 	twoFactor: number;
@@ -114,6 +117,7 @@ export type UserMinAggregateInputType = {
 	coverImage?: true;
 	bio?: true;
 	institution?: true;
+	instituteId?: true;
 	currentSeamster?: true;
 	role?: true;
 	twoFactor?: true;
@@ -135,6 +139,7 @@ export type UserMaxAggregateInputType = {
 	coverImage?: true;
 	bio?: true;
 	institution?: true;
+	instituteId?: true;
 	currentSeamster?: true;
 	role?: true;
 	twoFactor?: true;
@@ -156,6 +161,7 @@ export type UserCountAggregateInputType = {
 	coverImage?: true;
 	bio?: true;
 	institution?: true;
+	instituteId?: true;
 	currentSeamster?: true;
 	role?: true;
 	twoFactor?: true;
@@ -271,6 +277,7 @@ export type UserGroupByOutputType = {
 	coverImage: string | null;
 	bio: string | null;
 	institution: string | null;
+	instituteId: string | null;
 	currentSeamster: number | null;
 	role: $Enums.UserRole;
 	twoFactor: boolean;
@@ -312,6 +319,7 @@ export type UserWhereInput = {
 	coverImage?: Prisma.StringNullableFilter<"User"> | string | null;
 	bio?: Prisma.StringNullableFilter<"User"> | string | null;
 	institution?: Prisma.StringNullableFilter<"User"> | string | null;
+	instituteId?: Prisma.StringNullableFilter<"User"> | string | null;
 	currentSeamster?: Prisma.IntNullableFilter<"User"> | number | null;
 	role?: Prisma.EnumUserRoleFilter<"User"> | $Enums.UserRole;
 	twoFactor?: Prisma.BoolFilter<"User"> | boolean;
@@ -359,6 +367,7 @@ export type UserOrderByWithRelationInput = {
 	coverImage?: Prisma.SortOrder;
 	bio?: Prisma.SortOrder;
 	institution?: Prisma.SortOrder;
+	instituteId?: Prisma.SortOrder;
 	currentSeamster?: Prisma.SortOrder;
 	role?: Prisma.SortOrder;
 	twoFactor?: Prisma.SortOrder;
@@ -411,6 +420,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<
 		coverImage?: Prisma.StringNullableFilter<"User"> | string | null;
 		bio?: Prisma.StringNullableFilter<"User"> | string | null;
 		institution?: Prisma.StringNullableFilter<"User"> | string | null;
+		instituteId?: Prisma.StringNullableFilter<"User"> | string | null;
 		currentSeamster?: Prisma.IntNullableFilter<"User"> | number | null;
 		role?: Prisma.EnumUserRoleFilter<"User"> | $Enums.UserRole;
 		twoFactor?: Prisma.BoolFilter<"User"> | boolean;
@@ -459,6 +469,7 @@ export type UserOrderByWithAggregationInput = {
 	coverImage?: Prisma.SortOrder;
 	bio?: Prisma.SortOrder;
 	institution?: Prisma.SortOrder;
+	instituteId?: Prisma.SortOrder;
 	currentSeamster?: Prisma.SortOrder;
 	role?: Prisma.SortOrder;
 	twoFactor?: Prisma.SortOrder;
@@ -498,6 +509,10 @@ export type UserScalarWhereWithAggregatesInput = {
 		| Prisma.StringNullableWithAggregatesFilter<"User">
 		| string
 		| null;
+	instituteId?:
+		| Prisma.StringNullableWithAggregatesFilter<"User">
+		| string
+		| null;
 	currentSeamster?:
 		| Prisma.IntNullableWithAggregatesFilter<"User">
 		| number
@@ -529,6 +544,7 @@ export type UserCreateInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -576,6 +592,7 @@ export type UserUncheckedCreateInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -622,6 +639,7 @@ export type UserUpdateInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -678,6 +696,7 @@ export type UserUncheckedUpdateInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -735,6 +754,7 @@ export type UserCreateManyInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -755,6 +775,7 @@ export type UserUpdateManyMutationInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -785,6 +806,7 @@ export type UserUncheckedUpdateManyInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -816,6 +838,7 @@ export type UserCountOrderByAggregateInput = {
 	coverImage?: Prisma.SortOrder;
 	bio?: Prisma.SortOrder;
 	institution?: Prisma.SortOrder;
+	instituteId?: Prisma.SortOrder;
 	currentSeamster?: Prisma.SortOrder;
 	role?: Prisma.SortOrder;
 	twoFactor?: Prisma.SortOrder;
@@ -841,6 +864,7 @@ export type UserMaxOrderByAggregateInput = {
 	coverImage?: Prisma.SortOrder;
 	bio?: Prisma.SortOrder;
 	institution?: Prisma.SortOrder;
+	instituteId?: Prisma.SortOrder;
 	currentSeamster?: Prisma.SortOrder;
 	role?: Prisma.SortOrder;
 	twoFactor?: Prisma.SortOrder;
@@ -862,6 +886,7 @@ export type UserMinOrderByAggregateInput = {
 	coverImage?: Prisma.SortOrder;
 	bio?: Prisma.SortOrder;
 	institution?: Prisma.SortOrder;
+	instituteId?: Prisma.SortOrder;
 	currentSeamster?: Prisma.SortOrder;
 	role?: Prisma.SortOrder;
 	twoFactor?: Prisma.SortOrder;
@@ -1608,6 +1633,7 @@ export type UserCreateWithoutSessionsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -1654,6 +1680,7 @@ export type UserUncheckedCreateWithoutSessionsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -1727,6 +1754,7 @@ export type UserUpdateWithoutSessionsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -1782,6 +1810,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -1838,6 +1867,7 @@ export type UserCreateWithoutAccountsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -1884,6 +1914,7 @@ export type UserUncheckedCreateWithoutAccountsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -1957,6 +1988,7 @@ export type UserUpdateWithoutAccountsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -2012,6 +2044,7 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -2068,6 +2101,7 @@ export type UserCreateWithoutTwoFactorInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -2114,6 +2148,7 @@ export type UserUncheckedCreateWithoutTwoFactorInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -2187,6 +2222,7 @@ export type UserUpdateWithoutTwoFactorInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -2242,6 +2278,7 @@ export type UserUncheckedUpdateWithoutTwoFactorInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -2298,6 +2335,7 @@ export type UserCreateWithoutProfileViewsByInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -2344,6 +2382,7 @@ export type UserUncheckedCreateWithoutProfileViewsByInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -2398,6 +2437,7 @@ export type UserCreateWithoutProfileViewsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -2444,6 +2484,7 @@ export type UserUncheckedCreateWithoutProfileViewsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -2517,6 +2558,7 @@ export type UserUpdateWithoutProfileViewsByInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -2572,6 +2614,7 @@ export type UserUncheckedUpdateWithoutProfileViewsByInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -2647,6 +2690,7 @@ export type UserUpdateWithoutProfileViewsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -2702,6 +2746,7 @@ export type UserUncheckedUpdateWithoutProfileViewsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -2758,6 +2803,7 @@ export type UserCreateWithoutEducationInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -2804,6 +2850,7 @@ export type UserUncheckedCreateWithoutEducationInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -2877,6 +2924,7 @@ export type UserUpdateWithoutEducationInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -2932,6 +2980,7 @@ export type UserUncheckedUpdateWithoutEducationInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -2988,6 +3037,7 @@ export type UserCreateWithoutExperienceInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -3034,6 +3084,7 @@ export type UserUncheckedCreateWithoutExperienceInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -3107,6 +3158,7 @@ export type UserUpdateWithoutExperienceInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -3162,6 +3214,7 @@ export type UserUncheckedUpdateWithoutExperienceInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -3218,6 +3271,7 @@ export type UserCreateWithoutCoursesInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -3264,6 +3318,7 @@ export type UserUncheckedCreateWithoutCoursesInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -3337,6 +3392,7 @@ export type UserUpdateWithoutCoursesInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -3392,6 +3448,7 @@ export type UserUncheckedUpdateWithoutCoursesInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -3448,6 +3505,7 @@ export type UserCreateWithoutEnrollmentsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -3494,6 +3552,7 @@ export type UserUncheckedCreateWithoutEnrollmentsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -3567,6 +3626,7 @@ export type UserUpdateWithoutEnrollmentsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -3622,6 +3682,7 @@ export type UserUncheckedUpdateWithoutEnrollmentsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -3678,6 +3739,7 @@ export type UserCreateWithoutSkillEndorsementsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -3724,6 +3786,7 @@ export type UserUncheckedCreateWithoutSkillEndorsementsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -3797,6 +3860,7 @@ export type UserUpdateWithoutSkillEndorsementsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -3852,6 +3916,7 @@ export type UserUncheckedUpdateWithoutSkillEndorsementsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -3908,6 +3973,7 @@ export type UserCreateWithoutUserSkillsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -3954,6 +4020,7 @@ export type UserUncheckedCreateWithoutUserSkillsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -4027,6 +4094,7 @@ export type UserUpdateWithoutUserSkillsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -4082,6 +4150,7 @@ export type UserUncheckedUpdateWithoutUserSkillsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -4138,6 +4207,7 @@ export type UserCreateWithoutJobInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -4184,6 +4254,7 @@ export type UserUncheckedCreateWithoutJobInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -4257,6 +4328,7 @@ export type UserUpdateWithoutJobInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -4312,6 +4384,7 @@ export type UserUncheckedUpdateWithoutJobInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -4368,6 +4441,7 @@ export type UserCreateWithoutCompanyInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -4414,6 +4488,7 @@ export type UserUncheckedCreateWithoutCompanyInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -4487,6 +4562,7 @@ export type UserUpdateWithoutCompanyInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -4542,6 +4618,7 @@ export type UserUncheckedUpdateWithoutCompanyInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -4598,6 +4675,7 @@ export type UserCreateWithoutApplicationInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -4644,6 +4722,7 @@ export type UserUncheckedCreateWithoutApplicationInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -4717,6 +4796,7 @@ export type UserUpdateWithoutApplicationInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -4772,6 +4852,7 @@ export type UserUncheckedUpdateWithoutApplicationInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -4828,6 +4909,7 @@ export type UserCreateWithoutSaveJobInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -4874,6 +4956,7 @@ export type UserUncheckedCreateWithoutSaveJobInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -4947,6 +5030,7 @@ export type UserUpdateWithoutSaveJobInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -5002,6 +5086,7 @@ export type UserUncheckedUpdateWithoutSaveJobInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -5058,6 +5143,7 @@ export type UserCreateWithoutPostsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -5104,6 +5190,7 @@ export type UserUncheckedCreateWithoutPostsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -5177,6 +5264,7 @@ export type UserUpdateWithoutPostsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -5232,6 +5320,7 @@ export type UserUncheckedUpdateWithoutPostsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -5288,6 +5377,7 @@ export type UserCreateWithoutBookmarksInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -5334,6 +5424,7 @@ export type UserUncheckedCreateWithoutBookmarksInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -5407,6 +5498,7 @@ export type UserUpdateWithoutBookmarksInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -5462,6 +5554,7 @@ export type UserUncheckedUpdateWithoutBookmarksInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -5518,6 +5611,7 @@ export type UserCreateWithoutCommentsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -5564,6 +5658,7 @@ export type UserUncheckedCreateWithoutCommentsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -5637,6 +5732,7 @@ export type UserUpdateWithoutCommentsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -5692,6 +5788,7 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -5748,6 +5845,7 @@ export type UserCreateWithoutLikesInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -5794,6 +5892,7 @@ export type UserUncheckedCreateWithoutLikesInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -5867,6 +5966,7 @@ export type UserUpdateWithoutLikesInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -5922,6 +6022,7 @@ export type UserUncheckedUpdateWithoutLikesInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -5978,6 +6079,7 @@ export type UserCreateWithoutFollowingsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -6024,6 +6126,7 @@ export type UserUncheckedCreateWithoutFollowingsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -6078,6 +6181,7 @@ export type UserCreateWithoutFollowersInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -6124,6 +6228,7 @@ export type UserUncheckedCreateWithoutFollowersInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -6197,6 +6302,7 @@ export type UserUpdateWithoutFollowingsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -6252,6 +6358,7 @@ export type UserUncheckedUpdateWithoutFollowingsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -6327,6 +6434,7 @@ export type UserUpdateWithoutFollowersInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -6382,6 +6490,7 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -6438,6 +6547,7 @@ export type UserCreateWithoutReceivedNotificationsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -6484,6 +6594,7 @@ export type UserUncheckedCreateWithoutReceivedNotificationsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -6538,6 +6649,7 @@ export type UserCreateWithoutIssuedNotificationsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -6584,6 +6696,7 @@ export type UserUncheckedCreateWithoutIssuedNotificationsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -6657,6 +6770,7 @@ export type UserUpdateWithoutReceivedNotificationsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -6712,6 +6826,7 @@ export type UserUncheckedUpdateWithoutReceivedNotificationsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -6787,6 +6902,7 @@ export type UserUpdateWithoutIssuedNotificationsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -6842,6 +6958,7 @@ export type UserUncheckedUpdateWithoutIssuedNotificationsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -6898,6 +7015,7 @@ export type UserCreateWithoutResearchInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -6944,6 +7062,7 @@ export type UserUncheckedCreateWithoutResearchInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -7017,6 +7136,7 @@ export type UserUpdateWithoutResearchInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -7072,6 +7192,7 @@ export type UserUncheckedUpdateWithoutResearchInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -7128,6 +7249,7 @@ export type UserCreateWithoutContentViewsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -7174,6 +7296,7 @@ export type UserUncheckedCreateWithoutContentViewsInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -7247,6 +7370,7 @@ export type UserUpdateWithoutContentViewsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -7302,6 +7426,7 @@ export type UserUncheckedUpdateWithoutContentViewsInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -7358,6 +7483,7 @@ export type UserCreateWithoutSaveResearchInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -7404,6 +7530,7 @@ export type UserUncheckedCreateWithoutSaveResearchInput = {
 	coverImage?: string | null;
 	bio?: string | null;
 	institution?: string | null;
+	instituteId?: string | null;
 	currentSeamster?: number | null;
 	role?: $Enums.UserRole;
 	twoFactor?: boolean;
@@ -7477,6 +7604,7 @@ export type UserUpdateWithoutSaveResearchInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -7532,6 +7660,7 @@ export type UserUncheckedUpdateWithoutSaveResearchInput = {
 	coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	institution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+	instituteId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	currentSeamster?:
 		| Prisma.NullableIntFieldUpdateOperationsInput
 		| number
@@ -7934,6 +8063,7 @@ export type UserSelect<
 		coverImage?: boolean;
 		bio?: boolean;
 		institution?: boolean;
+		instituteId?: boolean;
 		currentSeamster?: boolean;
 		role?: boolean;
 		twoFactor?: boolean;
@@ -7988,6 +8118,7 @@ export type UserSelectScalar = {
 	coverImage?: boolean;
 	bio?: boolean;
 	institution?: boolean;
+	instituteId?: boolean;
 	currentSeamster?: boolean;
 	role?: boolean;
 	twoFactor?: boolean;
@@ -8012,6 +8143,7 @@ export type UserOmit<
 	| "coverImage"
 	| "bio"
 	| "institution"
+	| "instituteId"
 	| "currentSeamster"
 	| "role"
 	| "twoFactor"
@@ -8102,6 +8234,7 @@ export type $UserPayload<
 			coverImage: string | null;
 			bio: string | null;
 			institution: string | null;
+			instituteId: string | null;
 			currentSeamster: number | null;
 			role: $Enums.UserRole;
 			twoFactor: boolean;
@@ -8957,6 +9090,7 @@ export interface UserFieldRefs {
 	readonly coverImage: Prisma.FieldRef<"User", "String">;
 	readonly bio: Prisma.FieldRef<"User", "String">;
 	readonly institution: Prisma.FieldRef<"User", "String">;
+	readonly instituteId: Prisma.FieldRef<"User", "String">;
 	readonly currentSeamster: Prisma.FieldRef<"User", "Int">;
 	readonly role: Prisma.FieldRef<"User", "UserRole">;
 	readonly twoFactor: Prisma.FieldRef<"User", "Boolean">;

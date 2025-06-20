@@ -125,15 +125,15 @@ export type InputJsonArray = runtime.InputJsonArray;
 export type InputJsonValue = runtime.InputJsonValue;
 
 export const NullTypes = {
+	AnyNull: runtime.objectEnumValues.classes.AnyNull as new (
+		secret: never,
+	) => typeof runtime.objectEnumValues.instances.AnyNull,
 	DbNull: runtime.objectEnumValues.classes.DbNull as new (
 		secret: never,
 	) => typeof runtime.objectEnumValues.instances.DbNull,
 	JsonNull: runtime.objectEnumValues.classes.JsonNull as new (
 		secret: never,
 	) => typeof runtime.objectEnumValues.instances.JsonNull,
-	AnyNull: runtime.objectEnumValues.classes.AnyNull as new (
-		secret: never,
-	) => typeof runtime.objectEnumValues.instances.AnyNull,
 };
 
 /**
@@ -427,36 +427,36 @@ type FieldRefInputType<Model, FieldType> = Model extends never
 	: FieldRef<Model, FieldType>;
 
 export const ModelName = {
-	User: "User",
-	Session: "Session",
 	Account: "Account",
-	Verification: "Verification",
-	TwoFactor: "TwoFactor",
-	ProfileView: "ProfileView",
-	Education: "Education",
-	Experience: "Experience",
+	Application: "Application",
+	Bookmark: "Bookmark",
+	Comment: "Comment",
+	Company: "Company",
+	ContentView: "ContentView",
 	Course: "Course",
-	Enrollment: "Enrollment",
 	CourseAnnouncement: "CourseAnnouncement",
 	CourseMaterial: "CourseMaterial",
-	SkillEndorsement: "SkillEndorsement",
-	Skill: "Skill",
-	UserSkill: "UserSkill",
-	Job: "Job",
-	Company: "Company",
-	Application: "Application",
-	SaveJob: "SaveJob",
-	Post: "Post",
-	Bookmark: "Bookmark",
-	Media: "Media",
-	Comment: "Comment",
-	Like: "Like",
+	Education: "Education",
+	Enrollment: "Enrollment",
+	Experience: "Experience",
 	Follow: "Follow",
+	Job: "Job",
+	Like: "Like",
+	Media: "Media",
 	Notification: "Notification",
+	Post: "Post",
+	ProfileView: "ProfileView",
 	Research: "Research",
-	ContentView: "ContentView",
+	SaveJob: "SaveJob",
 	SaveResearch: "SaveResearch",
+	Session: "Session",
+	Skill: "Skill",
+	SkillEndorsement: "SkillEndorsement",
 	Todo: "Todo",
+	TwoFactor: "TwoFactor",
+	User: "User",
+	UserSkill: "UserSkill",
+	Verification: "Verification",
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -2813,36 +2813,37 @@ export type TypeMap<
  */
 
 export const UserScalarFieldEnum = {
-	id: "id",
-	name: "name",
-	email: "email",
-	emailVerified: "emailVerified",
-	image: "image",
-	coverImage: "coverImage",
-	bio: "bio",
-	institution: "institution",
-	currentSeamster: "currentSeamster",
-	role: "role",
-	twoFactor: "twoFactor",
-	username: "username",
-	displayUsername: "displayUsername",
+	banExpires: "banExpires",
 	banned: "banned",
 	banReason: "banReason",
-	banExpires: "banExpires",
+	bio: "bio",
+	coverImage: "coverImage",
 	createdAt: "createdAt",
+	currentSeamster: "currentSeamster",
+	displayUsername: "displayUsername",
+	email: "email",
+	emailVerified: "emailVerified",
+	id: "id",
+	image: "image",
+	instituteId: "instituteId",
+	institution: "institution",
+	name: "name",
+	role: "role",
+	twoFactor: "twoFactor",
 	updatedAt: "updatedAt",
+	username: "username",
 } as const;
 
 export type UserScalarFieldEnum =
 	(typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum];
 
 export const SessionScalarFieldEnum = {
-	id: "id",
-	expiresAt: "expiresAt",
-	token: "token",
 	createdAt: "createdAt",
-	updatedAt: "updatedAt",
+	expiresAt: "expiresAt",
+	id: "id",
 	ipAddress: "ipAddress",
+	token: "token",
+	updatedAt: "updatedAt",
 	userAgent: "userAgent",
 	userId: "userId",
 } as const;
@@ -2851,40 +2852,40 @@ export type SessionScalarFieldEnum =
 	(typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum];
 
 export const AccountScalarFieldEnum = {
-	id: "id",
-	accountId: "accountId",
-	providerId: "providerId",
-	userId: "userId",
 	accessToken: "accessToken",
-	refreshToken: "refreshToken",
-	idToken: "idToken",
 	accessTokenExpiresAt: "accessTokenExpiresAt",
+	accountId: "accountId",
+	createdAt: "createdAt",
+	id: "id",
+	idToken: "idToken",
+	password: "password",
+	providerId: "providerId",
+	refreshToken: "refreshToken",
 	refreshTokenExpiresAt: "refreshTokenExpiresAt",
 	scope: "scope",
-	password: "password",
-	createdAt: "createdAt",
 	updatedAt: "updatedAt",
+	userId: "userId",
 } as const;
 
 export type AccountScalarFieldEnum =
 	(typeof AccountScalarFieldEnum)[keyof typeof AccountScalarFieldEnum];
 
 export const VerificationScalarFieldEnum = {
+	createdAt: "createdAt",
+	expiresAt: "expiresAt",
 	id: "id",
 	identifier: "identifier",
-	value: "value",
-	expiresAt: "expiresAt",
-	createdAt: "createdAt",
 	updatedAt: "updatedAt",
+	value: "value",
 } as const;
 
 export type VerificationScalarFieldEnum =
 	(typeof VerificationScalarFieldEnum)[keyof typeof VerificationScalarFieldEnum];
 
 export const TwoFactorScalarFieldEnum = {
+	backupCodes: "backupCodes",
 	id: "id",
 	secret: "secret",
-	backupCodes: "backupCodes",
 	userId: "userId",
 } as const;
 
@@ -2892,62 +2893,62 @@ export type TwoFactorScalarFieldEnum =
 	(typeof TwoFactorScalarFieldEnum)[keyof typeof TwoFactorScalarFieldEnum];
 
 export const ProfileViewScalarFieldEnum = {
-	id: "id",
-	viewerId: "viewerId",
-	profileId: "profileId",
 	createdAt: "createdAt",
+	id: "id",
+	profileId: "profileId",
+	viewerId: "viewerId",
 } as const;
 
 export type ProfileViewScalarFieldEnum =
 	(typeof ProfileViewScalarFieldEnum)[keyof typeof ProfileViewScalarFieldEnum];
 
 export const EducationScalarFieldEnum = {
+	createdAt: "createdAt",
+	degree: "degree",
+	description: "description",
+	endDate: "endDate",
+	field: "field",
+	grade: "grade",
 	id: "id",
 	institution: "institution",
-	degree: "degree",
-	field: "field",
 	startDate: "startDate",
-	endDate: "endDate",
-	grade: "grade",
-	description: "description",
-	userId: "userId",
-	createdAt: "createdAt",
 	updatedAt: "updatedAt",
+	userId: "userId",
 } as const;
 
 export type EducationScalarFieldEnum =
 	(typeof EducationScalarFieldEnum)[keyof typeof EducationScalarFieldEnum];
 
 export const ExperienceScalarFieldEnum = {
-	id: "id",
-	title: "title",
 	company: "company",
-	location: "location",
-	type: "type",
-	startDate: "startDate",
-	endDate: "endDate",
+	createdAt: "createdAt",
 	current: "current",
 	description: "description",
-	userId: "userId",
-	createdAt: "createdAt",
+	endDate: "endDate",
+	id: "id",
+	location: "location",
+	startDate: "startDate",
+	title: "title",
+	type: "type",
 	updatedAt: "updatedAt",
+	userId: "userId",
 } as const;
 
 export type ExperienceScalarFieldEnum =
 	(typeof ExperienceScalarFieldEnum)[keyof typeof ExperienceScalarFieldEnum];
 
 export const CourseScalarFieldEnum = {
-	id: "id",
-	title: "title",
-	description: "description",
 	code: "code",
-	credits: "credits",
-	level: "level",
-	department: "department",
-	duration: "duration",
-	status: "status",
-	professorId: "professorId",
 	createdAt: "createdAt",
+	credits: "credits",
+	department: "department",
+	description: "description",
+	duration: "duration",
+	id: "id",
+	level: "level",
+	professorId: "professorId",
+	status: "status",
+	title: "title",
 	updatedAt: "updatedAt",
 } as const;
 
@@ -2955,13 +2956,13 @@ export type CourseScalarFieldEnum =
 	(typeof CourseScalarFieldEnum)[keyof typeof CourseScalarFieldEnum];
 
 export const EnrollmentScalarFieldEnum = {
-	id: "id",
-	status: "status",
-	progress: "progress",
-	grade: "grade",
 	courseId: "courseId",
-	studentId: "studentId",
 	createdAt: "createdAt",
+	grade: "grade",
+	id: "id",
+	progress: "progress",
+	status: "status",
+	studentId: "studentId",
 	updatedAt: "updatedAt",
 } as const;
 
@@ -2969,12 +2970,12 @@ export type EnrollmentScalarFieldEnum =
 	(typeof EnrollmentScalarFieldEnum)[keyof typeof EnrollmentScalarFieldEnum];
 
 export const CourseAnnouncementScalarFieldEnum = {
-	id: "id",
-	title: "title",
 	content: "content",
-	priority: "priority",
 	courseId: "courseId",
 	createdAt: "createdAt",
+	id: "id",
+	priority: "priority",
+	title: "title",
 	updatedAt: "updatedAt",
 } as const;
 
@@ -2982,14 +2983,14 @@ export type CourseAnnouncementScalarFieldEnum =
 	(typeof CourseAnnouncementScalarFieldEnum)[keyof typeof CourseAnnouncementScalarFieldEnum];
 
 export const CourseMaterialScalarFieldEnum = {
-	id: "id",
-	title: "title",
-	type: "type",
 	content: "content",
-	fileUrl: "fileUrl",
-	order: "order",
 	courseId: "courseId",
 	createdAt: "createdAt",
+	fileUrl: "fileUrl",
+	id: "id",
+	order: "order",
+	title: "title",
+	type: "type",
 	updatedAt: "updatedAt",
 } as const;
 
@@ -2997,20 +2998,20 @@ export type CourseMaterialScalarFieldEnum =
 	(typeof CourseMaterialScalarFieldEnum)[keyof typeof CourseMaterialScalarFieldEnum];
 
 export const SkillEndorsementScalarFieldEnum = {
+	createdAt: "createdAt",
+	endorserId: "endorserId",
 	id: "id",
 	userSkillId: "userSkillId",
-	endorserId: "endorserId",
-	createdAt: "createdAt",
 } as const;
 
 export type SkillEndorsementScalarFieldEnum =
 	(typeof SkillEndorsementScalarFieldEnum)[keyof typeof SkillEndorsementScalarFieldEnum];
 
 export const SkillScalarFieldEnum = {
-	id: "id",
-	title: "title",
 	content: "content",
 	createdAt: "createdAt",
+	id: "id",
+	title: "title",
 	updatedAt: "updatedAt",
 } as const;
 
@@ -3018,62 +3019,62 @@ export type SkillScalarFieldEnum =
 	(typeof SkillScalarFieldEnum)[keyof typeof SkillScalarFieldEnum];
 
 export const UserSkillScalarFieldEnum = {
-	id: "id",
-	skillId: "skillId",
-	userId: "userId",
-	level: "level",
-	yearsOfExperience: "yearsOfExperience",
 	createdAt: "createdAt",
+	id: "id",
+	level: "level",
+	skillId: "skillId",
 	updatedAt: "updatedAt",
+	userId: "userId",
+	yearsOfExperience: "yearsOfExperience",
 } as const;
 
 export type UserSkillScalarFieldEnum =
 	(typeof UserSkillScalarFieldEnum)[keyof typeof UserSkillScalarFieldEnum];
 
 export const JobScalarFieldEnum = {
-	id: "id",
-	title: "title",
+	createdAt: "createdAt",
 	description: "description",
-	startDate: "startDate",
+	duration: "duration",
 	endDate: "endDate",
-	weeklyHours: "weeklyHours",
+	experienceLevel: "experienceLevel",
+	id: "id",
+	location: "location",
 	requirements: "requirements",
 	salary: "salary",
-	location: "location",
+	skillId: "skillId",
+	startDate: "startDate",
+	title: "title",
 	type: "type",
-	experienceLevel: "experienceLevel",
-	duration: "duration",
-	createdAt: "createdAt",
 	updatedAt: "updatedAt",
 	userId: "userId",
-	skillId: "skillId",
+	weeklyHours: "weeklyHours",
 } as const;
 
 export type JobScalarFieldEnum =
 	(typeof JobScalarFieldEnum)[keyof typeof JobScalarFieldEnum];
 
 export const CompanyScalarFieldEnum = {
-	id: "id",
-	name: "name",
+	createdAt: "createdAt",
 	description: "description",
-	website: "website",
+	id: "id",
+	jobId: "jobId",
 	location: "location",
 	logo: "logo",
-	userId: "userId",
-	jobId: "jobId",
-	createdAt: "createdAt",
+	name: "name",
 	updatedAt: "updatedAt",
+	userId: "userId",
+	website: "website",
 } as const;
 
 export type CompanyScalarFieldEnum =
 	(typeof CompanyScalarFieldEnum)[keyof typeof CompanyScalarFieldEnum];
 
 export const ApplicationScalarFieldEnum = {
-	id: "id",
 	applicantId: "applicantId",
+	createdAt: "createdAt",
+	id: "id",
 	jobId: "jobId",
 	status: "status",
-	createdAt: "createdAt",
 	updatedAt: "updatedAt",
 } as const;
 
@@ -3081,20 +3082,20 @@ export type ApplicationScalarFieldEnum =
 	(typeof ApplicationScalarFieldEnum)[keyof typeof ApplicationScalarFieldEnum];
 
 export const SaveJobScalarFieldEnum = {
-	id: "id",
-	userId: "userId",
-	jobId: "jobId",
 	createdAt: "createdAt",
+	id: "id",
+	jobId: "jobId",
 	updatedAt: "updatedAt",
+	userId: "userId",
 } as const;
 
 export type SaveJobScalarFieldEnum =
 	(typeof SaveJobScalarFieldEnum)[keyof typeof SaveJobScalarFieldEnum];
 
 export const PostScalarFieldEnum = {
-	id: "id",
 	content: "content",
 	createdAt: "createdAt",
+	id: "id",
 	updatedAt: "updatedAt",
 	userId: "userId",
 } as const;
@@ -3103,78 +3104,78 @@ export type PostScalarFieldEnum =
 	(typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum];
 
 export const BookmarkScalarFieldEnum = {
-	id: "id",
-	userId: "userId",
-	postId: "postId",
 	createdAt: "createdAt",
+	id: "id",
+	postId: "postId",
 	updatedAt: "updatedAt",
+	userId: "userId",
 } as const;
 
 export type BookmarkScalarFieldEnum =
 	(typeof BookmarkScalarFieldEnum)[keyof typeof BookmarkScalarFieldEnum];
 
 export const MediaScalarFieldEnum = {
-	id: "id",
-	type: "type",
-	url: "url",
+	createdAt: "createdAt",
 	fileKey: "fileKey",
 	fileSize: "fileSize",
-	postId: "postId",
+	id: "id",
 	jobId: "jobId",
+	postId: "postId",
 	researchId: "researchId",
-	createdAt: "createdAt",
+	type: "type",
 	updatedAt: "updatedAt",
+	url: "url",
 } as const;
 
 export type MediaScalarFieldEnum =
 	(typeof MediaScalarFieldEnum)[keyof typeof MediaScalarFieldEnum];
 
 export const CommentScalarFieldEnum = {
-	id: "id",
 	content: "content",
-	userId: "userId",
-	postId: "postId",
-	jobId: "jobId",
-	researchId: "researchId",
 	createdAt: "createdAt",
+	id: "id",
+	jobId: "jobId",
+	postId: "postId",
+	researchId: "researchId",
 	updatedAt: "updatedAt",
+	userId: "userId",
 } as const;
 
 export type CommentScalarFieldEnum =
 	(typeof CommentScalarFieldEnum)[keyof typeof CommentScalarFieldEnum];
 
 export const LikeScalarFieldEnum = {
-	id: "id",
-	userId: "userId",
-	postId: "postId",
-	jobId: "jobId",
-	researchId: "researchId",
 	createdAt: "createdAt",
+	id: "id",
+	jobId: "jobId",
+	postId: "postId",
+	researchId: "researchId",
 	updatedAt: "updatedAt",
+	userId: "userId",
 } as const;
 
 export type LikeScalarFieldEnum =
 	(typeof LikeScalarFieldEnum)[keyof typeof LikeScalarFieldEnum];
 
 export const FollowScalarFieldEnum = {
-	id: "id",
 	followerId: "followerId",
 	followingId: "followingId",
+	id: "id",
 } as const;
 
 export type FollowScalarFieldEnum =
 	(typeof FollowScalarFieldEnum)[keyof typeof FollowScalarFieldEnum];
 
 export const NotificationScalarFieldEnum = {
+	createdAt: "createdAt",
 	id: "id",
-	recipientId: "recipientId",
 	issuerId: "issuerId",
-	postId: "postId",
 	jobId: "jobId",
+	postId: "postId",
+	read: "read",
+	recipientId: "recipientId",
 	researchId: "researchId",
 	type: "type",
-	read: "read",
-	createdAt: "createdAt",
 	updatedAt: "updatedAt",
 } as const;
 
@@ -3182,11 +3183,11 @@ export type NotificationScalarFieldEnum =
 	(typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum];
 
 export const ResearchScalarFieldEnum = {
-	id: "id",
-	title: "title",
-	description: "description",
 	content: "content",
 	createdAt: "createdAt",
+	description: "description",
+	id: "id",
+	title: "title",
 	updatedAt: "updatedAt",
 	userId: "userId",
 } as const;
@@ -3195,32 +3196,32 @@ export type ResearchScalarFieldEnum =
 	(typeof ResearchScalarFieldEnum)[keyof typeof ResearchScalarFieldEnum];
 
 export const ContentViewScalarFieldEnum = {
+	createdAt: "createdAt",
 	id: "id",
-	viewerId: "viewerId",
+	jobId: "jobId",
 	postId: "postId",
 	researchId: "researchId",
-	jobId: "jobId",
-	createdAt: "createdAt",
+	viewerId: "viewerId",
 } as const;
 
 export type ContentViewScalarFieldEnum =
 	(typeof ContentViewScalarFieldEnum)[keyof typeof ContentViewScalarFieldEnum];
 
 export const SaveResearchScalarFieldEnum = {
-	id: "id",
-	userId: "userId",
-	researchId: "researchId",
 	createdAt: "createdAt",
+	id: "id",
+	researchId: "researchId",
 	updatedAt: "updatedAt",
+	userId: "userId",
 } as const;
 
 export type SaveResearchScalarFieldEnum =
 	(typeof SaveResearchScalarFieldEnum)[keyof typeof SaveResearchScalarFieldEnum];
 
 export const TodoScalarFieldEnum = {
+	completed: "completed",
 	id: "id",
 	text: "text",
-	completed: "completed",
 } as const;
 
 export type TodoScalarFieldEnum =

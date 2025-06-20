@@ -14,6 +14,7 @@ model User {
   coverImage      String?
   bio             String?
   institution     String?
+  instituteId     String?
   currentSeamster Int?
   role            UserRole  @default(STUDENT)
   twoFactor       Boolean   @default(false)

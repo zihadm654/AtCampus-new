@@ -7,17 +7,17 @@
  * 🟢 You can import this file directly.
  */
 export const UserRole = {
-	STUDENT: "STUDENT",
-	PROFESSOR: "PROFESSOR",
 	INSTITUTION: "INSTITUTION",
 	ORGANIZATION: "ORGANIZATION",
+	PROFESSOR: "PROFESSOR",
+	STUDENT: "STUDENT",
 } as const;
 
 export type UserRole = (typeof UserRole)[keyof typeof UserRole];
 
 export const ApplicationStatus = {
-	pending: "pending",
 	accepted: "accepted",
+	pending: "pending",
 	rejected: "rejected",
 } as const;
 
@@ -32,9 +32,9 @@ export const MediaType = {
 export type MediaType = (typeof MediaType)[keyof typeof MediaType];
 
 export const NotificationType = {
-	LIKE: "LIKE",
-	FOLLOW: "FOLLOW",
 	COMMENT: "COMMENT",
+	FOLLOW: "FOLLOW",
+	LIKE: "LIKE",
 } as const;
 
 export type NotificationType =
